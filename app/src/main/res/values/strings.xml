@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Aprendendo com o Livro</string>
+    <string name="title_activity_bem_vindo">Bem-Vindo</string>
+    <string name="usuario">Usuário: </string>
+    <string name="senha">Senha: </string>
+    <string name="login">Entrar</string>
+</resources>
