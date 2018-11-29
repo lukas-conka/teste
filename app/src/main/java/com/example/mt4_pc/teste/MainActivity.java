@@ -1,64 +1,46 @@
 package com.example.mt4_pc.teste;
 
-import android.content.Context;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.Menu;
+import android.view.MenuItem;
 
-
-public class MainActivity extends DebugActivity {
-
-    //final Context context = this;
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btLogin = (Button) findViewById(R.id.btLogin);
-        btLogin.setOnClickListener(onClickLogin());
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        //Infla o menu com os botoes da action bar
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
-        //metodo onCLickLogin() retorna uma implmentacao de View.onClickListener
-        private View.OnClickListener onClickLogin(){
-            return new Button.OnClickListener(){
-                public void onClick(View view){
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
 
-                    TextView tLogin = (TextView) findViewById(R.id.tLogin);
-                    TextView tSenha = (TextView) findViewById(R.id.tSenha);
-                    String login = tLogin.getText().toString();
-                    String senha = tSenha.getText().toString();
-                    if("lucas".equals(login) && "123".equals(senha)){
-                        Intent intent = new Intent(getContext(), BemVindoActivity.class);
-                        Bundle params = new Bundle();
-                        params.putString("nome", "Lucas Amaral");
-                        //intent.putExtra("nome", "Lucas amaral"); usado tbm para passar parametros para Intent
-                        intent.putExtras(params);
-                        startActivity(intent);
-                    }else{
-                        alert("Login e senha incorretos");
-                    }
-
-                }
-            };
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
         }
 
-        private Context getContext(){
-            return this;
-        }
-
-        private void alert(String s){
-            Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
-        }
+        return super.onOptionsItemSelected(item);
+    }
 }
