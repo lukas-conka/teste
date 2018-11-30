@@ -1,5 +1,6 @@
 package com.example.mt4_pc.teste;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,32 +12,29 @@ import android.view.View;
 import android.widget.TextView;
 import android.app.Activity;
 
-public class BemVindoActivity extends DebugActivity {
+public class BemVindoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bem_vindo);
-
-        /*Intent intent = getIntent();
-        Bundle args = intent.getExtras();
-        String nome = args.getString("nome");*/
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Bundle args = getIntent().getExtras();
         String nome = args.getString("nome");
         TextView text = (TextView) findViewById(R.id.text);
         text.setText(nome + ", seja bem-vindo");
-        //add o bottao "up navigation"
-        //getActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
   @Override
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
         if(id == android.R.id.home){
-            //o metodo finish() vai encerrar essa activity
-            finish();
-            return true;
+           Intent homeIntent = new Intent(this, MainActivity.class);
+           homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+           startActivity(homeIntent);
         }
         return super.onOptionsItemSelected(item);
     }
