@@ -27,7 +27,7 @@ public class BemVindoActivity extends DebugActivity {
         TextView text = (TextView) findViewById(R.id.text);
         text.setText(nome + ", seja bem-vindo");
         //add o bottao "up navigation"
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        //getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
   @Override
