@@ -18,6 +18,9 @@ public class BemVindoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bem_vindo);
+
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Capitulo 5");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
